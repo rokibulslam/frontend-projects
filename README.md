@@ -1,141 +1,31 @@
-<!-- Editor Setup -->
+# React Testing
+* Jest and React Testing Library
+* Fundamentals of writing a test
+* Test components with user interactions
+* Test components wrapped in a provider
+* Test Components with mocking
+* Static analysis testing
 
-## Editor Setup
+# Jest vs RTL
+#### Jest
+* Jest is a javascritp testing framework
+* Jest is a test runner that finds tests, runs the tests, determines whether the tests passed or failde and reports it back in a human readable manner
+### RTL
+* Javascript testing utility that provides virtual DOM for testing React component.
+* React Testing Library provides a virtual DOM which we can use to interact with and verify the behaviour of a react component.
+* Testing library is infact a family of packages which helps test UI components.
+* The core library is called DOM Testing library and RTL is simply a wrapper around this core library to test react applications in an easier way
+### Types of Tests
+  ### Unit Test
+  * Focus is on testing the individual building blocks of an application such as a class or a function or a component.
+  * Each unit or building block is tested in isolation, independent of other units
+  * Dependencies are mocked
+  * Unit test Run in a short time and make it very easy to pinpoint failures
+  ### Integretion Test
+  * Focus is on testing a combination of units and ensuring the work together
+  ### End to end tests
+  * Focus is on testing the entire application flow and ensuring it works as designed from start to finish
+  * Involves in a real UI, a real backend database, real services etc
+  * Have a cost implication as you interact with real APIs that may charge based on the number of requests
 
-You can use any editor but as I personally prefer VS Code. I will give some instructions about how I prefer VS code to be setup for React applications.
-
-### Plugins
-
-You need to install the below plugins:
-
-- ESLint by Dirk Baeumer
-- Prettier - Code formatter by Prettier
-- Dracula Official Theme (optional)
-
-### Settings
-
-Follow the below settings for VS Code -
-
-1. Create a new folder called ".vscode" inside the project root folder
-2. Create a new file called "settings.json" inside that folder.
-3. Paste the below json in the newly created settings.json file and save the file.
-
-```json
-{
-  // Theme
-  "workbench.colorTheme": "Dracula",
-
-  // config related to code formatting
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "[javascript]": {
-    "editor.formatOnSave": false,
-    "editor.defaultFormatter": null
-  },
-  "[javascriptreact]": {
-    "editor.formatOnSave": false,
-    "editor.defaultFormatter": null
-  },
-  "javascript.validate.enable": false, //disable all built-in syntax checking
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.tslint": true,
-    "source.organizeImports": true
-  },
-  "eslint.alwaysShowStatus": true,
-  // emmet
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
-  }
-}
-```
-
-If you followed all previous steps, the theme should change and your editor should be ready.
-
-### Set Line Breaks
-
-Make sure in your VS Code Editor, "LF" is selected as line feed instead of CRLF (Carriage return and line feed). To do that, just click LF/CRLF in bottom right corner of editor, click it and change it to "LF". If you dont do that, you will get errors in my setup.
-
-<img src="public/line-feed.jpg" alt="Line Feed" width="700">
-
-## Linting Setup
-
-In order to lint and format your React project automatically according to popular airbnb style guide, I recommend you to follow the instructions below.
-
-### Install Dev Dependencies
-
-```sh
-yarn add -D prettier
-yarn add -D babel-eslint
-npx install-peerdeps --dev eslint-config-airbnb
-yarn add -D eslint-config-prettier eslint-plugin-prettier
-```
-
-or You can also add a new script in the scripts section like below to install everything with a single command:
-
-```json
-scripts: {
-    "lint": "yarn add -D prettier && yarn add -D babel-eslint && npx install-peerdeps --dev eslint-config-airbnb && yarn add -D eslint-config-prettier eslint-plugin-prettier"
-}
-```
-
-and then simply run the below command in the terminal -
-
-```sh
-yarn lint #or 'npm run lint'
-```
-
-### Create Linting Configuration file manually
-
-Create a `.eslintrc` file in the project root and enter the below contents:
-
-```json
-{
-  "extends": [
-    "airbnb",
-    "airbnb/hooks",
-    "eslint:recommended",
-    "prettier",
-    "plugin:jsx-a11y/recommended"
-  ],
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 8
-  },
-  "env": {
-    "browser": true,
-    "node": true,
-    "es6": true,
-    "jest": true
-  },
-  "rules": {
-    "react/react-in-jsx-scope": 0,
-    "react-hooks/rules-of-hooks": "error",
-    "no-console": 0,
-    "react/state-in-constructor": 0,
-    "indent": 0,
-    "linebreak-style": 0,
-    "react/prop-types": 0,
-    "jsx-a11y/click-events-have-key-events": 0,
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx"]
-      }
-    ],
-    "prettier/prettier": [
-      "error",
-      {
-        "trailingComma": "es5",
-        "singleQuote": true,
-        "printWidth": 100,
-        "tabWidth": 4,
-        "semi": true,
-        "endOfLine": "auto"
-      }
-    ]
-  },
-  "plugins": ["prettier", "react", "react-hooks"]
-}
-```
+  # Unit Tests >> Integretion Test >> E2E Tests
